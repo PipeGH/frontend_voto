@@ -1,0 +1,53 @@
+<section class="card mt-5">
+  <h2 id="title">Formulario de registro reactivo</h2>
+  <form class="card-body" (ngSubmit)="mostrar()" [formGroup]="formUser">
+    <fieldset class="mb-3">
+      <label for="nombre" class="form-label">Nombre:</label>
+      <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del usuario"
+        formControlName="nombre" [ngClass]="{'is-invalid animated shake': getNombre.invalid && getNombre.touched}">
+      <div class="alert alert-danger mt-2" [hidden]="getNombre.valid || getNombre.pristine">
+        El campo nombre es obligatorio
+      </div>
+    </fieldset>
+    <fieldset class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="text" class="form-control" name="email" id="email" placeholder="Email del usuario"
+        formControlName="email" [ngClass]="{'is-invalid animated shake': getEmail.invalid && getEmail.touched}">
+      <div class="alert alert-danger mt-2" [hidden]="getEmail.valid || getEmail.pristine">
+        <span *ngIf="getEmail.errors?.['required']">
+          El campo email es obligatorio
+        </span>
+        <span *ngIf="getEmail.errors?.['email']">
+          El formato del email es invalido
+        </span>
+      </div>
+    </fieldset>
+    <fieldset class="mb-3">
+      <label for="edad" class="form-label">Edad:</label>
+      <input type="number" class="form-control" name="edad" id="edad" placeholder="Edad del usuario"
+        formControlName="edad" [ngClass]="{'is-invalid animated shake': getEdad.invalid && getEdad.touched}">
+      <div class="alert alert-danger mt-2" [hidden]="getEdad.valid || getEdad.pristine">
+        El campo edad es obligatorio
+      </div>
+    </fieldset>
+    <fieldset class="mb-3">
+      <label for="password" class="form-label">Contraseña:</label>
+      <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña del usuario"
+        formControlName="password"
+        [ngClass]="{'is-invalid animated shake': getPassword.invalid && getPassword.touched}">
+      <div class="alert alert-danger mt-2" [hidden]="getPassword.valid || getPassword.pristine">
+        <span *ngIf="getPassword.errors?.['required']">
+          El campo Password es obligatorio
+        </span>
+        <span *ngIf="getPassword.errors?.['min']">
+          La contraseña que ingresó es muy corta
+        </span>
+      </div>
+    </fieldset>
+    <fieldset class="section_button">
+      <button type="submit" class="btn" [disabled]="formUser.invalid">
+        Enviar
+      </button>
+    </fieldset>
+  </form>
+</section>

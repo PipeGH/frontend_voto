@@ -1,21 +1,78 @@
-<div class="container">
-  <form class="form">
-    <img src="../src/assets/logo.jpg" alt="" />
-    <p class="form-title">Iniciar Sesion</p>
-    <div class="input-container">
-      <input placeholder="Ingresar usuario" class="input-field" type="text" />
-      <label for="input-field" class="input-label">Ingresar usuario</label>
-      <span class="input-highlight"></span>
+<div *ngIf="!token; then login"></div>
+<div *ngIf="token; then menu"></div>
+<ng-template #login>
+  <section class="container">
+    <form class="form" (ngSubmit)="mostrar()" [formGroup]="formUser">
+      <img class="logo" src="../assets/logo.jpg" alt="" />
+      <p class="form-title">Iniciar Sesion</p>
+      <div class="input-container">
+        <label for=" form-label" class="form-label">Digite su Usuario:</label>
+        <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="input-field"
+          formControlName="usuario"
+          [ngClass]="{'is-invalid animated shake': getUsuario.invalid && getUsuario.touched}" />
+        <span class="input-highlight"></span>
+        <div class="alert alert-danger mt-2" [hidden]="getUsuario.valid || getUsuario.pristine">
+          El campo usuario es obligatorio
+        </div>
+      </div>
+      <div class="input-container">
+        <label for="form-label" class="form-label">Digite su Contraseña</label>
+        <input type="password" name="password" id="password" placeholder="********" class="input-field"
+          formControlName="password"
+          [ngClass]="{'is-invalid animated shake': getPassword.invalid && getPassword.touched}">
+        <span class="input-highlight"></span>
+      </div>
+      <div class="alert alert-danger mt-2" [hidden]="getPassword.valid || getPassword.pristine">
+        <span *ngIf="getPassword.errors?.['required']">
+          El campo Password es obligatorio
+        </span>
+      </div>
+      <button type="submit" class="submit" [disabled]="formUser.invalid">Ingresar</button>
+    </form>
+  </section>
+</ng-template>
+<ng-template #menu>
+  <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <nav class="sidebar locked">
+    <div class="logo_items flex">
+      <span class="usuario_name">Supervisor</span>
+      <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
+      <i class="bx bx-x" id="sidebar-close"></i>
     </div>
-    <div class="input-container">
-      <input
-        placeholder="Ingresar contraseña"
-        class="input-field"
-        type="password"
-      />
-      <label for="input-field" class="input-label">Ingresar contraseña</label>
-      <span class="input-highlight"></span>
+    <div class="menu_container">
+      <div class="menu_items">
+        <ul class="menu_item">
+          <div class="menu_title flex">
+            <span class="line"></span>
+          </div>
+          <li class="item">
+            <a href="#" class="link flex">
+              <i class="bx bx-table"></i>
+              <span>Tablas General</span>
+            </a>
+          </li>
+          <li class="item">
+            <a href="#" class="link flex">
+              <i class="bx bx-grid-alt"></i>
+              <span>Tablas Especificas</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <button type="submit" class="submit">Ingresar</button>
-  </form>
-</div>
+  </nav>
+
+  <!-- Navbar -->
+  <nav class="navbar flex">
+    <i class="bx bx-menu" id="sidebar-open"></i>
+  </nav>
+
+  <nav class="menu">
+    <a href="#">
+
+    </a>
+    <a href="#">
+      <button>Salir</button>
+    </a>
+  </nav>
+</ng-template>
