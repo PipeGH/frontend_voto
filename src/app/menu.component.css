@@ -87,12 +87,6 @@
   background: #ac0000;
   transition: all 0.3s ease;
 }
-.menu_title .line {
-  opacity: 0;
-}
-.sidebar.close .line {
-  opacity: 1;
-}
 .item {
   list-style: none;
 }
