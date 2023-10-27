@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 /* Pre css */
 .flex {
   display: flex;
@@ -26,23 +27,23 @@
 /* Sidebar */
 .sidebar {
   position: fixed;
-  top: 60px;
+  top: 65px;
   left: 0;
   height: 100%;
   width: 270px;
-  background: #fff;
+  background: #d8d0d0;
   padding: 15px 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 2px 3px 5px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.4s ease;
   -webkit-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   -ms-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
 .sidebar.close {
   width: calc(55px + 20px);
@@ -53,29 +54,11 @@
   margin: 0 auto;
 }
 
-.sidebar.close #lock-icon,
-.sidebar.close #sidebar-close {
-  opacity: 0;
-  pointer-events: none;
-}
-#lock-icon,
-#sidebar-close {
-  padding: 10px;
-  color: #ac0000;
-  font-size: 25px;
-  cursor: pointer;
-  margin-left: -4px;
-  transition: all 0.3s ease;
-}
-#sidebar-close {
-  display: none;
-  color: #333;
-}
 .menu_container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 20px;
   overflow-y: auto;
   height: calc(100% - 82px);
 }
@@ -122,7 +105,11 @@
 }
 .link:hover {
   color: #fff;
-  background-color: #f20000;
+  background: linear-gradient(
+    180deg,
+    rgba(172, 0, 0, 1) 20%,
+    rgba(242, 0, 0, 1) 60%
+  );
 }
 .link span {
   white-space: nowrap;
@@ -149,13 +136,10 @@
   padding: 10px 20px;
   border-radius: 0 0 8px 8px;
   justify-content: space-between;
-}
-#sidebar-open {
-  font-size: 30px;
-  color: #333;
-  cursor: pointer;
-  margin-right: 20px;
-  display: none;
+  -webkit-border-radius: ;
+  -moz-border-radius: ;
+  -ms-border-radius: ;
+  -o-border-radius: ;
 }
 
 .navbar img {
@@ -165,44 +149,19 @@
 }
 
 /* Responsive */
-@media screen and (max-width: 1100px) {
-  .navbar {
-    left: 65%;
-  }
-}
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 420px) {
   .sidebar {
-    left: 0;
-    z-index: 1000;
-  }
-  .sidebar.close {
-    left: -100%;
-  }
-  #sidebar-close {
-    display: block;
-  }
-  #lock-icon {
-    display: none;
-  }
-  .navbar {
-    left: 0;
-    max-width: 100%;
-    transform: translateX(0%);
-    -webkit-transform: translateX(0%);
-    -moz-transform: translateX(0%);
-    -ms-transform: translateX(0%);
-    -o-transform: translateX(0%);
-  }
-  #sidebar-open {
-    display: block;
+    height: 100%;
+    width: 100%;
   }
 }
-
+/*menu horizontal*/
 .menu {
   position: relative;
   width: 100%;
-  height: 65px;
+  height: 60px;
   background-color: #ccc;
+  box-shadow: 2px 1px 5px 5px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -219,17 +178,55 @@
   padding: 0 10px;
 }
 
-.menu .logo {
-  width: 50px;
-  height: 50px;
+.menu .logo_menu {
+  width: 150px;
+  height: 45px;
+  margin-top: 5px;
+  border-radius: 10px;
+  box-shadow: 2px 1px 3px 3px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 .menu_ .menu .salir {
   width: 50px;
   height: 50px;
 }
 
-@media (max-width: 420px) {
-  .menu {
-    display: none;
-  }
+.exit {
+  display: block;
+  width: 120px;
+  height: 40px;
+  padding: 0.75rem 1.25rem;
+  margin-top: 10px;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.6rem;
+  font-size: 1.1rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  background: linear-gradient(
+    150deg,
+    rgba(242, 0, 0, 1) 20%,
+    rgba(172, 0, 0, 1) 80%
+  );
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  -ms-border-radius: 0.6rem;
+  -o-border-radius: 0.6rem;
+}
+
+.exit:hover {
+  background: linear-gradient(
+    150deg,
+    rgba(172, 0, 0, 1) 0%,
+    rgba(242, 0, 0, 1) 100%
+  );
 }
