@@ -66,7 +66,6 @@
   flex-direction: column;
   justify-content: space-between;
   margin-top: 20px;
-  overflow-y: auto;
   height: calc(100% - 82px);
 }
 .menu_container::-webkit-scrollbar {
@@ -230,13 +229,14 @@
     rgba(242, 0, 0, 1) 100%
   );
 }
-/* Seccion de tablas */
+/* Seccion de contenido*/
 .content {
   position: fixed;
   width: calc(100% - 275px);
   height: calc(100% - 65px);
   top: 65px;
   left: 280px;
+  overflow: auto;
 }
 /* Responsive */
 @media screen and (max-width: 1024px) {
@@ -258,7 +258,6 @@
     height: calc(100% - 65px);
     top: 65px;
     left: 5px;
-    overflow-y: auto;
     z-index: 1;
   }
 }

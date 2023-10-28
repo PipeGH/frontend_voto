@@ -1,1 +1,58 @@
-<p>tablas-especificas works!</p>
+<!------------------Cards----------------------->
+<div class="card" *ngFor="let ciudad of sitios">
+  <section class="card-content">
+    <article class="card-place">
+      <p><i class="bi bi-archive"></i>
+        Lugar de Votación:</p>
+      <span>{{ciudad.municipio}}</span>
+      <p><i class="bi bi-archive"></i>
+        Numero de Votantes:</p>
+      <span>{{ciudad.municipio}}</span>
+      <p><i class="bi bi-archive"></i>
+        Numero de Votos:</p>
+      <span>{{ciudad.municipio}}</span>
+    </article>
+  </section>
+</div>
+<div class="selects">
+  <label for="">Municipios</label>
+  <select name="lugar_votacion">
+    <option value="" *ngFor="let ciudad of sitios">{{ciudad.municipio}}</option>
+  </select>
+  <label for="">Mesas</label>
+  <select name="lugar_votacion">
+    <option value="" *ngFor="let ciudad of sitios">{{ciudad.municipio}}</option>
+  </select>
+</div>
+
+<!--------------Tabla especifica---------------->
+<div id="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Lugar de votación</th>
+        <th>Cantidad de votantes</th>
+        <th>Cantidad de votos</th>
+        <th>Hora</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>Luz</td>
+      <td>Febrero</td>
+      <td>$ 5,500</td>
+      <td>10:00 a.m.</td>
+    </tr>
+    <tr>
+      <td>Coche</td>
+      <td>Marzo</td>
+      <td>$ 10,100</td>
+      <td>10:00 a.m.</td>
+    </tr>
+    <tr>
+      <td>Internet</td>
+      <td>Abril</td>
+      <td>$ 450</td>
+      <td>10:00 a.m.</td>
+    </tr>
+  </table>
+</div>
