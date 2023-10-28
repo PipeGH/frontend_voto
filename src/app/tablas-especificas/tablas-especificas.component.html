@@ -14,19 +14,19 @@
     </article>
   </section>
 </div>
-<div class="selects">
-  <label for="">Municipios</label>
-  <select name="lugar_votacion">
-    <option value="" *ngFor="let ciudad of sitios">{{ciudad.municipio}}</option>
-  </select>
-  <label for="">Mesas</label>
-  <select name="lugar_votacion">
-    <option value="" *ngFor="let ciudad of sitios">{{ciudad.municipio}}</option>
-  </select>
-</div>
-
 <!--------------Tabla especifica---------------->
 <div id="table-container">
+  <div class="selects">
+    <label for="">Municipios</label>
+    <select name="lugar_votacion">
+      <option value="" *ngFor="let ciudad of sitios">{{ciudad.municipio}}</option>
+    </select>
+    <label for="">Mesas</label>
+    <select name="lugar_votacion">
+      <option value="" *ngFor="let ciudad of sitios">{{ciudad.municipio}}</option>
+    </select>
+  </div>
+  
   <table>
     <thead>
       <tr>
