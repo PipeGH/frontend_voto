@@ -20,4 +20,18 @@ export class GeneralesService {
   getList(id: number) {
     return this.http.get(`${this.url}/api/v1/votos/selectOneMesa/${id}`);
   }
+
+  getTotalLugar() {
+    return this.http.get(`${this.url}/api/v1/votos/selectSumatoriaAllMesas`);
+  }
+
+  getTotal() {
+    return this.http.get<{ status: number; list: any }>(
+      `${this.url}/api/v1/votos/selectTotal`
+    );
+  }
+
+  getGrafica() {
+    return this.http.get(`${this.url}/api/v1/votos/selectGrafica`);
+  }
 }
