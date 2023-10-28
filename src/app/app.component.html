@@ -43,19 +43,19 @@
       <div class="menu_items">
         <ul class="menu_item">
           <li class="option_menu">
-            <a href="#" class="link flex" (click)="closeMenu()">
+            <a href="#" class="link flex" (click)="closeMenu()" routerLink="registro">
               <i class="bi bi-plus-circle"></i>
               <span>Registrar Avance</span>
             </a>
           </li>
           <li class="option_menu">
-            <a href=" #" class="link flex" (click)="closeMenu()">
+            <a href=" #" class="link flex" (click)="closeMenu()" routerLink="generales">
               <i class="bi bi-table"></i>
               <span>Tabla General</span>
             </a>
           </li>
           <li class="option_menu">
-            <a href=" #" class="link flex" (click)="closeMenu()" *ngIf=" usuario == 'Administrador'">
+            <a href=" #" class="link flex" (click)="closeMenu()" *ngIf=" usuario == 'Administrador'" routerLink="especificos">
               <i class="bi bi-table"></i>
               <span>Tablas Especificas</span>
             </a>
@@ -76,4 +76,5 @@
       <button class="exit" (click)="close_session()">Salir</button>
     </a>
   </nav>
+  <router-outlet></router-outlet>
 </ng-template>
