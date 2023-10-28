@@ -32,24 +32,31 @@
   </section>
 </ng-template>
 <ng-template #menu>
-  <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <nav class="sidebar locked">
+  <nav class="sidebar" [hidden]="menuOpen">
     <div class="logo_items flex">
-      <span class="usuario_name">Supervisor</span>
-      <i class="bx bxs-user-circle" title="Unlock Sidebar"></i>
+      <span class="user_name">
+        <i class="bi bi-person-circle" id="user"></i>
+        {{usuario}}
+      </span>
     </div>
     <div class="menu_container">
       <div class="menu_items">
         <ul class="menu_item">
-          <li class="item">
-            <a href="#" class="link flex">
-              <i class="bx bx-table"></i>
-              <span>Tablas General</span>
+          <li class="option_menu">
+            <a href="#" class="link flex" (click)="closeMenu()">
+              <i class="bi bi-plus-circle"></i>
+              <span>Registrar Avance</span>
             </a>
           </li>
-          <li class="item">
-            <a href="#" class="link flex">
-              <i class="bx bx-grid-alt"></i>
+          <li class="option_menu">
+            <a href=" #" class="link flex" (click)="closeMenu()">
+              <i class="bi bi-table"></i>
+              <span>Tabla General</span>
+            </a>
+          </li>
+          <li class="option_menu">
+            <a href=" #" class="link flex" (click)="closeMenu()" *ngIf=" usuario == 'Administrador'">
+              <i class="bi bi-table"></i>
               <span>Tablas Especificas</span>
             </a>
           </li>
@@ -57,15 +64,16 @@
       </div>
     </div>
   </nav>
-
   <!-- Navbar -->
-
   <nav class="menu">
     <a href="#">
       <img class="logo_menu" src="../assets/logo_menu.png" alt="Logo">
     </a>
+    <span class="menu_hidden" (click)="menuOpen = !menuOpen">
+      <i class="bi bi-list"></i>
+    </span>
     <a href="#">
-      <button class="exit">Salir</button>
+      <button class="exit" (click)="close_session()">Salir</button>
     </a>
   </nav>
 </ng-template>

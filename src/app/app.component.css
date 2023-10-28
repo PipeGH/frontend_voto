@@ -115,3 +115,20 @@
     rgba(242, 0, 0, 1) 100%
   );
 }
+@media screen and (max-width: 420px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 360px;
+    height: auto;
+  }
+  .form-title {
+    font-size: 1.4rem;
+  }
+  .form .logo {
+    width: 130px;
+    height: 40px;
+  }
+}
