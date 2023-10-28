@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import Swal from 'sweetalert2';
-
+import decode from 'jwt-decode';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 export class AppComponent implements OnInit {
 
   token: any = localStorage.getItem('token');
+  usuario: string = '';
+  menuOpen: boolean = false;
 
   get getUsuario(): FormControl {
     return this.formUser.get('usuario') as FormControl;
@@ -23,7 +25,9 @@ export class AppComponent implements OnInit {
   constructor(private fb: FormBuilder, private service: AuthService) { }
 
   ngOnInit(): void {
-
+    if (this.token) {
+      this.cargar();
+    }
   }
 
   formUser = this.fb.group({
@@ -45,6 +49,7 @@ export class AppComponent implements OnInit {
           }).then(() => {
             const token = res.token;
             localStorage.setItem("token", token);
+            this.cargar();
             window.location.reload();
           });
           break;
@@ -68,6 +73,50 @@ export class AppComponent implements OnInit {
       })
     });
   }
+  cargar() {
+    let decodetoken: any = {};
+    let token: any = localStorage.getItem("token");
+    decodetoken = decode(token);
+    const { usuario } = decodetoken.data;
+    this.usuario = usuario;
+  }
+  closeMenu() {
+    this.menuOpen = true;
+  }
+  close_session() {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
 
+    swalWithBootstrapButtons.fire({
+      text: "Esta seguro de cerrar sesion",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: 'success',
+          text: 'Nos veremos pronto',
+        }).then(() => {
+          localStorage.removeItem("token");
+          window.location.reload();
+        })
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire({
+          text: 'Continuamos',
+        })
+      }
+    })
+  }
 
 }

@@ -9,14 +9,21 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TablasGeneralesComponent } from './tablas-generales/tablas-generales.component';
+import { TablasEspecificasComponent } from './tablas-especificas/tablas-especificas.component';
+import { RegistAvanceComponent } from './regist-avance/regist-avance.component';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TablasGeneralesComponent, TablasEspecificasComponent, RegistAvanceComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule
+
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
@@ -29,4 +36,4 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
