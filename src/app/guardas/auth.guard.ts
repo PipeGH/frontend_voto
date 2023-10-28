@@ -23,6 +23,9 @@ export class AuthGuard implements CanActivate {
         title: 'Oops...',
         text: 'Para acceder a este espacio primero debes iniciar sesión.',
       }).then((response) => {
+        if (localStorage.getItem('token')) {
+          localStorage.removeItem('token');
+        }
         window.location.reload();
       });
 

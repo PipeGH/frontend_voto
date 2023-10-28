@@ -14,16 +14,24 @@ import { TablasGeneralesComponent } from './tablas-generales/tablas-generales.co
 import { TablasEspecificasComponent } from './tablas-especificas/tablas-especificas.component';
 import { RegistAvanceComponent } from './regist-avance/regist-avance.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FiltroGeneralPipe } from './pipes/filtro-general.pipe';
 @NgModule({
-  declarations: [AppComponent, TablasGeneralesComponent, TablasEspecificasComponent, RegistAvanceComponent],
+  declarations: [
+    AppComponent,
+    TablasGeneralesComponent,
+    TablasEspecificasComponent,
+    RegistAvanceComponent,
+    FiltroGeneralPipe,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    NgxPaginationModule,
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
@@ -36,4 +44,4 @@ import { RegistAvanceComponent } from './regist-avance/regist-avance.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -59,6 +59,11 @@ tr:hover td {
   background-color: #f20000;
   color: white;
 }
+
+.description{
+  text-align: center;
+}
+
 @media screen and (max-width: 782px) {
   .card {
     width: 80%;

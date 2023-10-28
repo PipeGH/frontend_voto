@@ -1,17 +1,40 @@
 <!------------------Selects----------------------->
 <div class="selects">
-  <label for="">Municipios</label>
-  <select name="lugar_votacion">
-    <option value="">Ejemplo</option>
+  <label for="">Lugar</label>
+  <select name="lugar_votacion" (change)="onSelect($event)">
+    <option value="0">Seleccione</option>
+    <option *ngFor="let i of sitios" [value]="i.id">{{i.municipio}}</option>
   </select>
   <label for="">Mesas</label>
-  <select name="lugar_votacion">
-    <option value="">Ejemplo</option>
+  <select name="lugar_votacion" (change)="onSelectlist($event)">
+    <option value="">Selccione</option>
+    <option *ngFor="let i of mesas" [value]="i.cime_id">{{i.mesa}}</option>
   </select>
 </div>
 
 <!--------------Tabla especifica---------------->
 <div id="table-container">
+  <div class="row">
+    <div class="col">
+      <div class="mb-3">
+        <label for="mostrar" class="">Mostrar</label>
+        <select class="" name="mostrar" id="mostrar" [(ngModel)]="registros">
+          <option value="5" selected>5</option>
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">10</option>
+        </select>
+        <label for="" class="">Registros </label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="mb-3">
+        <label for="" class="">buscar</label>
+        <input type="text" class="" name="" id="" aria-describedby="helpId" placeholder="Buscar" [(ngModel)]="filtro">
+      </div>
+    </div>
+  </div>
   <table>
     <thead>
       <tr>
@@ -21,23 +44,18 @@
         <th>Hora</th>
       </tr>
     </thead>
-    <tr>
-      <td>Luz</td>
-      <td>Febrero</td>
-      <td>$ 5,500</td>
-      <td>10:00 a.m.</td>
-    </tr>
-    <tr>
-      <td>Coche</td>
-      <td>Marzo</td>
-      <td>$ 10,100</td>
-      <td>10:00 a.m.</td>
-    </tr>
-    <tr>
-      <td>Internet</td>
-      <td>Abril</td>
-      <td>$ 450</td>
-      <td>10:00 a.m.</td>
-    </tr>
+    <tbody>
+      <p class="description" *ngIf="lista.length == 0">
+        Para visualizar datos debe seleccionar un lugar y una mesa de votación
+      </p>
+      <tr *ngFor="let i of lista | filtroGeneral: filtro | paginate: { id: 'table' , itemsPerPage: registros, currentPage: p } ">
+        <td>{{i.municipio}}</td>
+        <td>{{i.votantes}}</td>
+        <td>{{i.votos_alcalde}}</td>
+        <td>{{i.hora}}</td>
+      </tr>
+    </tbody>
   </table>
+  <pagination-controls id="table" (pageChange)="handlePageChange($event)" previousLabel="Anterior" nextLabel="Siguiente">
+  </pagination-controls>
 </div>
