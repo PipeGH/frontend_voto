@@ -143,15 +143,11 @@
   position: fixed;
   top: 0;
   left: 60%;
-  transform: translateX(-50%);
   background: #fff;
   padding: 10px 20px;
   border-radius: 0 0 8px 8px;
   justify-content: space-between;
-  -webkit-border-radius: ;
-  -moz-border-radius: ;
-  -ms-border-radius: ;
-  -o-border-radius: ;
+  transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -163,30 +159,7 @@
   width: 40px;
   margin-left: 20px;
 }
-/* Responsive */
-@media screen and (max-width: 420px) {
-  .sidebar {
-    height: auto;
-    width: 100%;
-    border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -o-border-radius: 15px;
-  }
-  .menu_items i {
-    font-size: 25px;
-  }
-  .menu_hidden {
-    display: flex;
-    margin-top: 10px;
-    visibility: visible;
-    cursor: pointer;
-  }
-  .menu_hidden:hover {
-    color: #ac0000;
-  }
-}
+
 /*menu horizontal*/
 .menu {
   position: relative;
@@ -256,4 +229,59 @@
     rgba(172, 0, 0, 1) 0%,
     rgba(242, 0, 0, 1) 100%
   );
+}
+/* Seccion de tablas */
+.content {
+  position: fixed;
+  width: calc(100% - 275px);
+  height: calc(100% - 65px);
+  top: 65px;
+  left: 280px;
+}
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    z-index: 2;
+  }
+  .menu_hidden {
+    display: flex;
+    margin-top: 10px;
+    visibility: visible;
+    cursor: pointer;
+  }
+  .menu_hidden:hover {
+    color: #ac0000;
+  }
+  .content {
+    position: fixed;
+    width: calc(100% - 10px);
+    height: calc(100% - 65px);
+    top: 65px;
+    left: 5px;
+    overflow-y: auto;
+    z-index: 1;
+  }
+}
+@media screen and (max-width: 420px) {
+  .sidebar {
+    height: auto;
+    width: 100%;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+  }
+  .menu_items i {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 220px) {
+  .content {
+    background-color: #ac0000;
+    width: calc(100% - 10px);
+    height: calc(100% - 65px);
+    margin-top: 5px;
+    margin-left: 5px;
+  }
 }

@@ -55,7 +55,8 @@
             </a>
           </li>
           <li class="option_menu">
-            <a href=" #" class="link flex" (click)="closeMenu()" *ngIf=" usuario == 'Administrador'" routerLink="especificos">
+            <a href=" #" class="link flex" (click)="closeMenu()" *ngIf=" usuario == 'Administrador'"
+              routerLink="especificos">
               <i class="bi bi-table"></i>
               <span>Tablas Especificas</span>
             </a>
@@ -76,5 +77,7 @@
       <button class="exit" (click)="close_session()">Salir</button>
     </a>
   </nav>
-  <router-outlet></router-outlet>
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
 </ng-template>
