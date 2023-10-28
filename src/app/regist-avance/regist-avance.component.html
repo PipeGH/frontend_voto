@@ -1,1 +1,77 @@
-<p>regist-avance works!</p>
+<section class="content_principal">
+    <div class="content_register">
+        <div class="section_title">
+            <h2 class="title">Registro de Avance</h2>
+        </div>
+        <div class="section_form">
+            <p id="description">En el siguiente formulario es posible realizar el registro de un nuevo avance</p>
+            <form (ngSubmit)="registrar()" [formGroup]="formAvance">
+                <fieldset class="mb-3">
+                    <label for="lugar" class="form-label">Lugar de votación:</label>
+                    <select name="lugar" id="lugar" class="form-select form-select-lg select_form" (change)="onSelect($event)" formControlName="ciudad_id"  [ngClass]="{'is-invalid animated shake': getCiudad_id.invalid && getCiudad_id.touched}">
+                        <option value="0">Seleccione</option>
+                        <option *ngFor="let i of sitios" [value]="i.id">{{i.municipio}}</option>
+                    </select>
+                    <div class="alert alert-danger mt-2" [hidden]="getCiudad_id.valid || getCiudad_id.pristine">
+                        <span *ngIf="getCiudad_id.errors?.['required']">
+                            El campo es obligatorio
+                          </span>
+                          <span *ngIf="getCiudad_id.errors?.['min']">
+                            Debe seleccionar una opción
+                          </span>
+                    </div>
+                </fieldset>
+                <fieldset class="mb-3">
+                    <label for="mesa" class="form-label">Mesa de votación</label>
+                    <select name="mesa" id="mesa" class="form-select form-select-lg select_form"  (change)="guardarCime($event)" formControlName="mesa_id" [ngClass]="{'is-invalid animated shake': getMesa_id.invalid && getMesa_id.touched}">
+                        <option value="0">Seleccione</option>
+                        <option *ngFor="let i of mesas" [value]="i.cime_id">{{i.mesa}}</option>
+                    </select>
+                    <div class="alert alert-danger mt-2" [hidden]="getMesa_id.valid || getMesa_id.pristine">
+                        <span *ngIf="getMesa_id.errors?.['required']">
+                            El campo es obligatorio
+                          </span>
+                          <span *ngIf="getMesa_id.errors?.['min']">
+                            Debe seleccionar una opción
+                          </span>
+                    </div>
+                </fieldset>
+                <fieldset class="mb-3">
+                    <label for="votantes" class="form-label">Cantidad de votantes</label>
+                    <input type="number" class="form-control" name="votantes" id="votantes" placeholder="Votantes" formControlName="votantes" [ngClass]="{'is-invalid animated shake': getVotantes.invalid && getVotantes.touched}">
+                    <div class="alert alert-danger mt-2" [hidden]="getVotantes.valid || getVotantes.pristine">
+                        <span *ngIf="getVotos_alcalde.errors?.['required']">
+                            El campo es obligatorio
+                          </span>
+                          <span *ngIf="getVotos_alcalde.errors?.['min']">
+                            El numero que ingreso no puede ser menor a 1
+                          </span>
+                    </div>
+                </fieldset>
+                <fieldset class="mb-3">
+                    <label for="votos" class="form-label">Cantidad de Votos</label>
+                    <input type="number" class="form-control" name="votos" id="votos" placeholder="Votos" required formControlName="votos_alcalde" [ngClass]="{'is-invalid animated shake': getVotos_alcalde.invalid && getVotos_alcalde.touched}">
+                    <div class="alert alert-danger mt-2" [hidden]="getVotos_alcalde.valid || getVotos_alcalde.pristine">
+                        <span *ngIf="getVotos_alcalde.errors?.['required']">
+                            El campo es obligatorio
+                          </span>
+                          <span *ngIf="getVotos_alcalde.errors?.['min']">
+                            El numero que ingreso no puede ser menor a 1
+                          </span>
+                    </div>
+                </fieldset>
+                <fieldset class="mb-3">
+                    <label for="registrador" class="form-label">Registrado por</label>
+                    <input type="text" class="form-control" name="registrador" id="registrador" placeholder="Registrador" formControlName="registradopor" [ngClass]="{'is-invalid animated shake': getRegistradorpor.invalid && getRegistradorpor.touched}">
+                    <div class="alert alert-danger mt-2" [hidden]="getRegistradorpor.valid || getRegistradorpor.pristine">
+                        El campo es obligatorio
+                    </div>
+                </fieldset>
+                <fieldset class="mb-3 section_btn">
+                    <button type="button" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="formAvance.invalid">Registrar</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</section>
