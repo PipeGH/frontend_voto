@@ -61,6 +61,22 @@ tr:hover td {
   background-color: #f20000;
   color: white;
 }
+
+.description {
+  text-align: center;
+}
+
+@media screen and (max-width: 782px) {
+  .card {
+    width: 80%;
+    height: 30%;
+    margin-left: 60px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+}
 @media screen and (max-width: 482px) {
   .selects {
     display: flex;
