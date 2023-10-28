@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralesService } from '../services/generales.service';
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-tablas-generales',
@@ -16,7 +17,7 @@ export class TablasGeneralesComponent implements OnInit {
   filtro: string = '';
   registros: number = 5;
 
-  constructor(private service: GeneralesService) {}
+  constructor(private service: GeneralesService) { }
 
   ngOnInit(): void {
     this.chargeData();

@@ -1,4 +1,11 @@
-/*Estilos selects*/
+/*Estilos de Tabla especifica*/
+#table-container {
+  margin: auto;
+  width: 80%;
+  height: auto;
+  padding: 10px;
+  overflow: auto;
+}
 .selects {
   display: flex;
   flex-direction: row;
@@ -16,6 +23,10 @@
   margin-left: 10px;
   border-radius: 10px;
   border: 2px solid #ccc;
+  -webkit-border-radius: ;
+  -moz-border-radius: ;
+  -ms-border-radius: ;
+  -o-border-radius: ;
 }
 .selects select:hover {
   border: 2px solid #222526;
@@ -24,15 +35,6 @@
   float: left;
   margin-left: 10px;
 }
-/*Estilos de Tabla especifica*/
-#table-container {
-  margin: auto;
-  width: 80%;
-  height: auto;
-  padding: 10px;
-  overflow: auto;
-}
-
 table {
   background-color: #fff;
   text-align: left;
@@ -60,7 +62,7 @@ tr:hover td {
   color: white;
 }
 
-.description{
+.description {
   text-align: center;
 }
 
@@ -76,31 +78,19 @@ tr:hover td {
   }
 }
 @media screen and (max-width: 482px) {
-  .card {
-    width: 80%;
-    margin: 10px 20px;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
   .selects {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: 50px;
-    width: 100px;
-    height: 10px;
-    padding-top: 60px;
-    font-size: 16px;
+    margin-bottom: 40px;
   }
+
   .selects select {
     height: 40px;
     margin-left: 10px;
   }
   #table-container {
-    margin-top: 20px;
     width: 95%;
     height: auto;
   }

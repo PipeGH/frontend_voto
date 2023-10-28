@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     return this.formUser.get('password') as FormControl;
   }
 
-  constructor(private fb: FormBuilder, private service: AuthService) {}
+  constructor(private fb: FormBuilder, private service: AuthService) { }
 
   ngOnInit(): void {
     if (this.token) {
@@ -100,7 +100,7 @@ export class AppComponent implements OnInit {
 
     swalWithBootstrapButtons
       .fire({
-        text: 'Esta seguro de cerrar sesion',
+        text: '¿Esta seguro de cerrar sesion?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Si',
@@ -111,7 +111,7 @@ export class AppComponent implements OnInit {
         if (result.isConfirmed) {
           Swal.fire({
             icon: 'success',
-            text: 'Nos veremos pronto',
+            text: 'Hasta pronto',
           }).then(() => {
             localStorage.removeItem('token');
             window.location.reload();
@@ -121,7 +121,7 @@ export class AppComponent implements OnInit {
           result.dismiss === Swal.DismissReason.cancel
         ) {
           Swal.fire({
-            text: 'Continuamos',
+            text: 'Perfecto, continuamos',
           });
         }
       });

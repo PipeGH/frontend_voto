@@ -9,7 +9,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TablasGeneralesComponent } from './tablas-generales/tablas-generales.component';
 import { TablasEspecificasComponent } from './tablas-especificas/tablas-especificas.component';
 import { RegistAvanceComponent } from './regist-avance/regist-avance.component';
@@ -30,7 +29,6 @@ import { FiltroGeneralPipe } from './pipes/filtro-general.pipe';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule,
     NgxPaginationModule,
   ],
   providers: [
@@ -44,4 +42,4 @@ import { FiltroGeneralPipe } from './pipes/filtro-general.pipe';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
