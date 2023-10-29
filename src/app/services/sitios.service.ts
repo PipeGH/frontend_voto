@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class SitiosService {
   url: string = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getLugares() {
     return this.http.get(`${this.url}/api/v1/sitio`);

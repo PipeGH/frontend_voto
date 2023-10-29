@@ -85,8 +85,10 @@ export class AppComponent implements OnInit {
     this.usuario = usuario;
   }
   closeMenu() {
-    if (window.innerWidth <= 720) {
+    if (window.innerWidth <= 620) {
       this.menuOpen = true;
+    } else {
+      this.menuOpen = false;
     }
   }
   close_session() {

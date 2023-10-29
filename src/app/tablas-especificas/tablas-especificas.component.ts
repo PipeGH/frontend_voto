@@ -20,17 +20,15 @@ export class TablasEspecificasComponent implements OnInit {
   colegio: any[] = [];
   subia: any[] = [];
   agua: any[] = [];
-
   p: number = 1;
   filtro: string = '';
   registros: number = 5;
 
-  constructor(private service: GeneralesService) {}
+  constructor(private service: GeneralesService) { }
 
   ngOnInit(): void {
     this.chargeData();
-    this.createChart();
-    this.createChart1();
+
   }
 
   chargeData(): void {
@@ -48,51 +46,6 @@ export class TablasEspecificasComponent implements OnInit {
       this.sumatoria_votantes = res.list[0]?.sumatoria_votantes;
       this.sumatoria_votos_por_alcalde =
         res.list[0]?.sumatoria_votos_por_alcalde;
-    });
-    this.service.getGrafica().subscribe((res: any) => {
-      for (let x of res.list) {
-        if (x.municipio == 'Agua Bonita') {
-          this.agua = [
-            ...this.agua,
-            {
-              municipio: x.municipio,
-              sumatoria_votantes: x.sumatoria_votantes,
-              sumatoria_votos_por_alcalde: x.sumatoria_votos_por_alcalde,
-              hora: x.hora,
-            },
-          ];
-        } else if (x.municipio == 'Silvania - Colegio') {
-          this.colegio = [
-            ...this.colegio,
-            {
-              municipio: x.municipio,
-              sumatoria_votantes: x.sumatoria_votantes,
-              sumatoria_votos_por_alcalde: x.sumatoria_votos_por_alcalde,
-              hora: x.hora,
-            },
-          ];
-        } else if (x.municipio == 'Silvania - Coliseo') {
-          this.coliseo = [
-            ...this.coliseo,
-            {
-              municipio: x.municipio,
-              sumatoria_votantes: x.sumatoria_votantes,
-              sumatoria_votos_por_alcalde: x.sumatoria_votos_por_alcalde,
-              hora: x.hora,
-            },
-          ];
-        } else if (x.municipio == 'Subia') {
-          this.subia = [
-            ...this.subia,
-            {
-              municipio: x.municipio,
-              sumatoria_votantes: x.sumatoria_votantes,
-              sumatoria_votos_por_alcalde: x.sumatoria_votos_por_alcalde,
-              hora: x.hora,
-            },
-          ];
-        }
-      }
     });
   }
 
@@ -131,101 +84,5 @@ export class TablasEspecificasComponent implements OnInit {
     this.p = event;
   }
 
-  public votantes: any;
-  public myChart: any;
-  createChart() {
-    this.votantes = document.getElementById('myChart');
-    this.myChart = new Chart('votantes', {
-      type: 'line',
-      data: {
-        labels: [
-          'Agua Bonita',
-          'Silvania-coliseo',
-          'Silvania-colegio',
-          'Subia',
-        ],
-        datasets: [
-          {
-            label: 'Total de Votantes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: ['rgba(255, 99, 132, 1)'],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1,
-            pointRadius: 8,
-          },
-        ],
-      },
 
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-          x: {
-            ticks: {
-              stepSize: 1,
-              font: {
-                size: 16,
-              },
-            },
-          },
-        },
-      },
-    });
-  }
-
-  public votos: any;
-  public myChart1: any;
-  createChart1() {
-    this.votos = document.getElementById('myChart1');
-    this.myChart1 = new Chart('votos', {
-      type: 'line',
-      data: {
-        labels: [
-          'Agua Bonita',
-          'Silvania-coliseo',
-          'Silvania-colegio',
-          'Subia',
-        ],
-        datasets: [
-          {
-            label: 'Total de Votos',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: ['rgba(54, 162, 235, 1)'],
-            borderColor: [
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1,
-            pointRadius: 8,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-          x: {
-            ticks: {
-              stepSize: 1,
-              font: {
-                size: 16,
-              },
-            },
-          },
-        },
-      },
-    });
-  }
 }

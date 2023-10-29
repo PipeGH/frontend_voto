@@ -7,7 +7,7 @@
   </select>
   <label for="">Mesas</label>
   <select name="lugar_votacion" (change)="onSelectlist($event)">
-    <option value="">Selccione</option>
+    <option value="">Seleccione</option>
     <option *ngFor="let i of mesas" [value]="i.cime_id">{{i.mesa}}</option>
   </select>
 </div>
